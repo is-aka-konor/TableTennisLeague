@@ -3,6 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableTennisLeague.SPA", "TableTennisLeague\TableTennisLeague.SPA.csproj", "{5C942689-BD45-46C3-9305-41F2DBDE9F68}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableTennisLeague.EloRanker", "TableTennisLeague.EloRanker\TableTennisLeague.EloRanker.csproj", "{1A2163F5-BB59-4A95-8646-0410C464F5AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableTennisLeague.EloRanker.Tests", "TableTennisLeague.EloRanker.Tests\TableTennisLeague.EloRanker.Tests.csproj", "{2D293F27-1C00-4857-BCA9-650D55A48EBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableTennisLeague.Data", "TableTennisLeague.Data\TableTennisLeague.Data.csproj", "{77CAC898-4247-4963-85F8-FA2D0AAA4006}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,5 +19,17 @@ Global
 		{5C942689-BD45-46C3-9305-41F2DBDE9F68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C942689-BD45-46C3-9305-41F2DBDE9F68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C942689-BD45-46C3-9305-41F2DBDE9F68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A2163F5-BB59-4A95-8646-0410C464F5AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A2163F5-BB59-4A95-8646-0410C464F5AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A2163F5-BB59-4A95-8646-0410C464F5AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A2163F5-BB59-4A95-8646-0410C464F5AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D293F27-1C00-4857-BCA9-650D55A48EBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D293F27-1C00-4857-BCA9-650D55A48EBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D293F27-1C00-4857-BCA9-650D55A48EBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D293F27-1C00-4857-BCA9-650D55A48EBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77CAC898-4247-4963-85F8-FA2D0AAA4006}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77CAC898-4247-4963-85F8-FA2D0AAA4006}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77CAC898-4247-4963-85F8-FA2D0AAA4006}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77CAC898-4247-4963-85F8-FA2D0AAA4006}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

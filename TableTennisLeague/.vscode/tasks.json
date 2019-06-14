@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/TableTennisLeague/TableTennisLeague.SPA.csproj"
+                "${workspaceFolder}/TableTennisLeague.SPA.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -17,7 +17,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/TableTennisLeague/TableTennisLeague.SPA.csproj"
+                "${workspaceFolder}/TableTennisLeague.SPA.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -28,7 +28,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/TableTennisLeague/TableTennisLeague.SPA.csproj"
+                "${workspaceFolder}/TableTennisLeague.SPA.csproj"
             ],
             "problemMatcher": "$tsc"
         }
