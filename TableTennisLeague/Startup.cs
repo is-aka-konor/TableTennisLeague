@@ -26,9 +26,12 @@ namespace TableTennisLeague
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            services.AddTransient<ISQLiteConnectionFactory, SQLiteConnsctionFactory>(factory => {
+                new SQLiteConnsctionFactory(connectionString);
+            });
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlite(connectionString));
 
             services.AddDefaultIdentity<ApplicationUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
