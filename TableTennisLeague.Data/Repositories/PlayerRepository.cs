@@ -1,25 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using Dapper;
 using TableTennisLeague.Data.Interfaces;
 using TableTennisLeague.Data.Model;
+using TableTennisLeague.Data.SqlCommands;
 
 namespace TableTennisLeague.Data.Repositories
 {
     public class PlayerRepository: IPlayerRepository
     {
-        private SqlConnection _connection;
-        private bool _disposed = false;
-        public PlayerRepository(SqlConnection connection)
+        private readonly ISQLiteConnectionFactory _connectionFactory;
+        public PlayerRepository(ISQLiteConnectionFactory connectionFactory)
         {
-            this._connection = connection;
+            this._connectionFactory = connectionFactory;
         }
 
-        public Player GetPlayer()
+        public Player GetPlayer(int id)
         {
             throw new NotImplementedException();
         }
-
+        public IEnumerable<Player> GetPlayers()
+        {
+            using(var connection = this._connectionFactory.CreateConnection())
+            {
+                connection.Open();
+                var command = PlayerCommands.GetAllPlayers;
+                var players = connection.Query<Player>(command);
+                connection.Close();
+                return players;
+            }
+        }
         public IEnumerable<Player> GetPlayers(int leagueId)
         {
             throw new NotImplementedException();
@@ -27,34 +38,28 @@ namespace TableTennisLeague.Data.Repositories
 
         public void InsertPlayer(Player player)
         {
-            throw new NotImplementedException();
+            using (var connection = this._connectionFactory.CreateConnection())
+            {
+                var command = PlayerCommands.CreatePlayer;
+                // INSERT INTO [ttl.Players] ([Name], [CurrentRank], [Won], [WonOverTime], [Lost], [LostOverTime])
+                // VALUES (@PlayerName, 1500, 0, 0, 0, 0);
+                // @"INSERT Customer([CustomerFirstName],[CustomerLastName],[IsActive]) values (@CustomerFirstName, @CustomerLastName, @IsActive)",new { CustomerFirstName = ourCustomer.CustomerFirstName, CustomerLastName = ourCustomer.CustomerLastName, IsActive = true});
+
+                var rowsAffected = connection.Execute(command, new
+                {
+                    Name = player.Name,
+                    CurrentRank = 1500,
+                    Won = 0,
+                    WonOverTime = 0,
+                    Lost = 0,
+                    LostOverTime = 0
+                });
+            }
         }
 
         public void UpdatePlayer(Player player)
         {
             throw new NotImplementedException();
-        }
-
-        IEnumerable<Player> IPlayerRepository.GetPlayers()
-        {
-            throw new NotImplementedException();
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!this._disposed)
-            {
-                if (disposing)
-                {
-                    this._connection.Dispose();
-                }
-            }
-            this._disposed = true;
-        }
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
         }
     }
 }

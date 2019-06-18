@@ -1,18 +1,18 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
-using TableTennisLeague.Data;
-using TableTennisLeague.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TableTennisLeague.Data;
+using TableTennisLeague.Data.Connection;
+using TableTennisLeague.Data.Interfaces;
+using TableTennisLeague.Data.Repositories;
+using TableTennisLeague.Models;
 
-namespace TableTennisLeague
+namespace TableTennisLeague.SPA
 {
     public class Startup
     {
@@ -27,9 +27,8 @@ namespace TableTennisLeague
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
-            services.AddTransient<ISQLiteConnectionFactory, SQLiteConnsctionFactory>(factory => {
-                new SQLiteConnsctionFactory(connectionString);
-            });
+            services.AddTransient<ISQLiteConnectionFactory, SQLiteConnectionFactory>(
+                factory => new SQLiteConnectionFactory(connectionString));
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(connectionString));
 
@@ -48,6 +47,8 @@ namespace TableTennisLeague
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddTransient<IPlayerRepository, PlayerRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

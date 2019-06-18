@@ -6,7 +6,7 @@ namespace TableTennisLeague.Data.Connection
 {
     public class SQLiteConnectionFactory : ISQLiteConnectionFactory
     {
-        private string _defaultConnectionString;
+        private readonly string _defaultConnectionString;
         public SQLiteConnectionFactory(string defaultConnection)
         {
             this._defaultConnectionString = defaultConnection;
@@ -18,7 +18,7 @@ namespace TableTennisLeague.Data.Connection
 
         public SQLiteConnection CreateConnection(string connectionString)
         {
-            return new SQLiteConnection($"Data Source={connectionString};");
+            return new SQLiteConnection($"{connectionString};");
         }
     }
 }

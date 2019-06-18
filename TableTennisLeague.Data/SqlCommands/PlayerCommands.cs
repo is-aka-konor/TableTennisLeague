@@ -6,7 +6,7 @@ namespace TableTennisLeague.Data.SqlCommands
     {
         public const string CreatePlayer = @"
             INSERT INTO [ttl.Players] ([Name], [CurrentRank], [Won], [WonOverTime], [Lost], [LostOverTime])
-            VALUES (@PlayerName, 1500, 0, 0, 0, 0);";
+            VALUES (@Name, @CurrentRank, @Won, @WonOverTime, @Lost, @LostOverTime);";
         public const string GetPlayerById = @"SELECT [Id], [Name], [CurrentRank], [Won], [WonOverTime], [Lost], [LostOverTime] FROM [ttl.Players] WHERE [Id] = @PlayerId";
         public const string GetAllPlayers = @"SELECT [Id], [Name], [CurrentRank], [Won], [WonOverTime], [Lost], [LostOverTime] FROM [ttl.Players]";
         public const string GetAllPlayersByLeagueId = @"

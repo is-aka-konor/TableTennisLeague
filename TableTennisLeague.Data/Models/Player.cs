@@ -7,40 +7,18 @@ namespace TableTennisLeague.Data.Model
         public int Id { get; set; }
         
         public double CurrentRank { get; set; }
-        public Statistics Results { get; set; }
-
-        public List<Game> GamesA { get; set; }
-        public List<Game> GamesB { get; set; }
-
-        public List<Game> Games
-        {
-            get => GetAllGames(); 
-        }
+        public int Won { get; set; }
+        public int WonOverTime { get; set; }
+        public int Lost { get; set; }
+        public int LostOverTime { get; set; }
         public string Name { get; set; }
 
-        public Player()
-        {
-
-        }
-        public Player(string name, double rank)
+        public Player(string name, double rank = 1500D)
         {
             CurrentRank = rank;
             Name = name;
         }
 
-        private List<Game> GetAllGames()
-        {
-            var result = new List<Game>();
-            if (GamesA != null)
-            {
-                result.AddRange(GamesA);    
-            }
-            if (GamesB != null)
-            {
-                result.AddRange(GamesB);
-            }
-            return result;
-        }
-        
+        public Player() { }
     }
 }
