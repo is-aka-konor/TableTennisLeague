@@ -6,14 +6,34 @@ namespace TableTennisLeague.Data.SqlCommands
 {
     public static class GameCommand
     {
-        public static readonly string GetPlayerById = @"SELECT Id
-		                                                     , Name
-		                                                     , CurrentRank
-		                                                     , Won
-		                                                     , WonOverTime
-		                                                     , Lost
-		                                                     , LostOverTime
-                                                        FROM [ttl.Players]
-                                                        WHERE [Id] = @id";
+        public static readonly string GetAllGames = @"SELECT GameId
+                                                            , GameDate
+                                                            , PlayerA
+                                                            , PlayerB
+                                                            , ResultPlayerA
+                                                            , ResultPlayerB
+                                                        FROM [ttl.vw_GamesPlayers];";
+
+        public static readonly string GetAllGamesByLeagueId = @"SELECT GameId
+                                                                    , GameDate
+                                                                    , PlayerA
+                                                                    , PlayerB
+                                                                    , ResultPlayerA
+                                                                    , ResultPlayerB
+                                                                FROM [ttl.vw_GamesPlayers]
+                                                                WHERE LeagueId = @LeagueId;";
+
+        public static readonly string GetAllGamesBySeasonId = @"SELECT GameId
+                                                                    , GameDate
+                                                                    , PlayerA
+                                                                    , PlayerB
+                                                                    , ResultPlayerA
+                                                                    , ResultPlayerB
+                                                                FROM [ttl.vw_GamesPlayers]
+                                                                WHERE SeasonId = @SeasonId;";
+
+        public static readonly string CreateGame = @"INSERT INTO [ttl.Games]
+                                                            ( SeasonId,  Date,  ResultPlayerA,  ResultPlayerB,  PlayerAId,  PlayerBId)
+                                                     VALUES (@SeasonId, @Date, @ResultPlayerA, @ResultPlayerB, @PlayerAId, @PlayerBId);";
     }
 }

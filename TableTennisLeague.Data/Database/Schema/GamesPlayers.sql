@@ -1,7 +1,9 @@
 CREATE TABLE `ttl.GamesPlayers` (
 	`Id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	`GameId`	INTEGER NOT NULL,
 	`PlayerAId`	INTEGER NOT NULL,
 	`PlayerBId`	INTEGER NOT NULL,
+	FOREIGN KEY(`GameId`) REFERENCES `ttl.Games`(`Id`),
 	FOREIGN KEY(`PlayerBId`) REFERENCES `ttl.Players`(`Id`),
 	FOREIGN KEY(`PlayerAId`) REFERENCES `ttl.Players`(`Id`)
 );
