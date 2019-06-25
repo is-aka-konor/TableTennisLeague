@@ -232,3 +232,6 @@ _Pvt_Extensions
 
 .idea
 /TableTennisLeague/app.db-journal
+
+# Mac OS files
+.DS_Store
