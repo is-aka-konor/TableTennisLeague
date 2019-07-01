@@ -1,11 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TableTennisLeague.Data.SqlCommands
+﻿namespace TableTennisLeague.Data.SqlCommands
 {
-    public static class GameCommand
+    public static class GameCommands
     {
+        public static readonly string GetGameById = @"SELECT GameId
+                                                            , GameDate
+                                                            , PlayerA
+                                                            , PlayerB
+                                                            , ResultPlayerA
+                                                            , ResultPlayerB
+                                                        FROM [ttl.vw_GamesPlayers]
+                                                       WHERE GameId = @GameId;";
+
         public static readonly string GetAllGames = @"SELECT GameId
                                                             , GameDate
                                                             , PlayerA
@@ -32,8 +37,27 @@ namespace TableTennisLeague.Data.SqlCommands
                                                                 FROM [ttl.vw_GamesPlayers]
                                                                 WHERE SeasonId = @SeasonId;";
 
+        public static readonly string GetAllGamesByPlayerId = @"SELECT GameId
+                                                                    , GameDate
+                                                                    , PlayerA
+                                                                    , PlayerB
+                                                                    , ResultPlayerA
+                                                                    , ResultPlayerB
+                                                                FROM [ttl.vw_GamesPlayers]
+                                                                WHERE PlayerAId = @playerId OR PlayerBId = @playerId";
+
         public static readonly string CreateGame = @"INSERT INTO [ttl.Games]
                                                             ( SeasonId,  Date,  ResultPlayerA,  ResultPlayerB,  PlayerAId,  PlayerBId)
                                                      VALUES (@SeasonId, @Date, @ResultPlayerA, @ResultPlayerB, @PlayerAId, @PlayerBId);";
+
+        public static readonly string DeleteGame = @"DELETE FROM [ttl.Games] WHERE Id = @GameId";
+
+        public static readonly string UpdateGame = @"UPDATE [ttl.Games] SET
+                                                    SeasonId = @SeasonId,
+                                                    Date = @Date,
+                                                    ResultPlayerA = @ResultPlayerA,
+                                                    ResultPlayerB = @ResultPlayerB,
+                                                    PlayerAId = @PlayerAId,
+                                                    PlayerBId = @PlayerBId)";
     }
 }

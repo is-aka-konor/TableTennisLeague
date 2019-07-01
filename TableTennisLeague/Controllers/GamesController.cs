@@ -7,17 +7,26 @@ namespace TableTennisLeague.SPA.Controllers
     [ApiController]
     public class GamesController : ControllerBase
     {
-        private readonly ISQLiteConnectionFactory _connectionFactory;
+        private readonly IGameRepository _gameRepository;
 
-        public GamesController(ISQLiteConnectionFactory connectionFactory)
+        public GamesController(IGameRepository gameRepository)
         {
-            this._connectionFactory = connectionFactory;
+            this._gameRepository = gameRepository;
         }
 
-        [HttpGet]
+        [HttpGet("{id:int}")]
         public IActionResult GetGame(int gameId)
         {
             return NotFound();
+        }
+
+        [HttpGet]
+        public IActionResult GetAllGames()
+        {
+            var result = this._gameRepository.GetAllGames();
+            if(result == null) return NotFound();
+
+            return Ok(result);
         }
     }
 }

@@ -49,6 +49,7 @@ namespace TableTennisLeague.SPA
             });
 
             services.AddTransient<IPlayerRepository, PlayerRepository>();
+            services.AddTransient<IGameRepository, GameRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

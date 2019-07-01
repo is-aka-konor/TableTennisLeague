@@ -3,6 +3,8 @@ SELECT s.[LeagueId]
      , s.[Id] AS 'SeasonId'
      , g.[Id] AS 'GameId'
      , g.[Date] AS 'GameDate'
+     , pA.[Id] AS 'PlayerAId'
+     , pB.[Id] AS 'PlayerBId'
      , pA.[Name] AS 'PlayerA'
      , pB.[Name] AS 'PlayerB'
      , g.[ResultPlayerA]

@@ -18,7 +18,14 @@ namespace TableTennisLeague.Data.Repositories
 
         public Player GetPlayer(int id)
         {
-            throw new NotImplementedException();
+            using(var connection = this._connectionFactory.CreateConnection())
+            {
+                connection.Open();
+                var command = PlayerCommands.GetAllPlayers;
+                var player = connection.QueryFirst<Player>(command);
+                connection.Close();
+                return player;
+            }
         }
         public IEnumerable<Player> GetPlayers()
         {
