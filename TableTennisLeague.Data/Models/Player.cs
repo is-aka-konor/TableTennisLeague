@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TableTennisLeague.Data.Model
+namespace TableTennisLeague.Data.Models
 {
     public class Player
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using TableTennisLeague.Data.Model;
+using TableTennisLeague.Data.Models;
 
 namespace TableTennisLeague.EloRanker
 {

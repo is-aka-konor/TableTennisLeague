@@ -2,73 +2,74 @@
 using System.Collections.Generic;
 using Dapper;
 using TableTennisLeague.Data.Interfaces;
-using TableTennisLeague.Data.Model;
+using TableTennisLeague.Data.Models;
 using TableTennisLeague.Data.SqlCommands;
 
 namespace TableTennisLeague.Data.Repositories
 {
     public class GameRepository: IGameRepository
     {
+        // TODO Create error handling -> prevent exception throwing
         private readonly ISQLiteConnectionFactory _connectionFactory;
         public GameRepository(ISQLiteConnectionFactory connectionFactory)
         {
             this._connectionFactory = connectionFactory;
         }
 
-        public Game GetGame(int gameId)
+        public GameViewModel GetGame(int gameId)
         {
             using(var connection = this._connectionFactory.CreateConnection())
             {
                 connection.Open();
                 var command = GameCommands.GetGameById;
-                var game = connection.QueryFirst<Game>(command, gameId);
+                var game = connection.QuerySingle<GameViewModel>(command, new { GameId = gameId });
                 connection.Close();
                 return game;
             }
         }
 
-        public IEnumerable<Game> GetAllGames()
+        public IEnumerable<GameViewModel> GetAllGames()
         {
             using(var connection = this._connectionFactory.CreateConnection())
             {
                 connection.Open();
                 var command = GameCommands.GetAllGames;
-                var games = connection.Query<Game>(command);
+                var games = connection.Query<GameViewModel>(command);
                 connection.Close();
                 return games;
             }
         }
-        public IEnumerable<Game> GetGamesForPlayer(int playerId)
+        public IEnumerable<GameViewModel> GetGamesForPlayer(int playerId)
         {
             using(var connection = this._connectionFactory.CreateConnection())
             {
                 connection.Open();
                 var command = GameCommands.GetAllGamesByPlayerId;
-                var games = connection.Query<Game>(command, playerId);
+                var games = connection.Query<GameViewModel>(command, new { PlayerId = playerId });
                 connection.Close();
                 return games;
             }
         }
 
-        public IEnumerable<Game> GetGamesForLeague(int leagueId)
+        public IEnumerable<GameViewModel> GetGamesForLeague(int leagueId)
         {
             using(var connection = this._connectionFactory.CreateConnection())
             {
                 connection.Open();
                 var command = GameCommands.GetAllGamesByLeagueId;
-                var games = connection.Query<Game>(command, leagueId);
+                var games = connection.Query<GameViewModel>(command, new { LeagueId = leagueId });
                 connection.Close();
                 return games;
             }
         }
 
-        public IEnumerable<Game> GetGamesForSeason(int seasonId)
+        public IEnumerable<GameViewModel> GetGamesForSeason(int seasonId)
         {
             using(var connection = this._connectionFactory.CreateConnection())
             {
                 connection.Open();
                 var command = GameCommands.GetAllGamesBySeasonId;
-                var games = connection.Query<Game>(command, seasonId);
+                var games = connection.Query<GameViewModel>(command, new { SeasonId = seasonId });
                 connection.Close();
                 return games;
             }
@@ -90,7 +91,7 @@ namespace TableTennisLeague.Data.Repositories
             {
                 connection.Open();
                 var command = GameCommands.DeleteGame;
-                var games = connection.Execute(command, gameId);
+                var games = connection.Execute(command, new { GameId = gameId });
                 connection.Close();
             }
         }

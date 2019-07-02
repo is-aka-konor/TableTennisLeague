@@ -1,12 +1,12 @@
-CREATE VIEW [ttl.vw_GamesPlayers] AS 
+﻿CREATE VIEW [ttl.vw_GamesPlayers] AS 
 SELECT s.[LeagueId]
      , s.[Id] AS 'SeasonId'
      , g.[Id] AS 'GameId'
      , g.[Date] AS 'GameDate'
      , pA.[Id] AS 'PlayerAId'
      , pB.[Id] AS 'PlayerBId'
-     , pA.[Name] AS 'PlayerA'
-     , pB.[Name] AS 'PlayerB'
+     , pA.[Name] AS 'PlayerAName'
+     , pB.[Name] AS 'PlayerBName'
      , g.[ResultPlayerA]
      , g.[ResultPlayerB]
 FROM [ttl.Games] AS g

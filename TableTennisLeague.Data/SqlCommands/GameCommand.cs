@@ -3,44 +3,64 @@
     public static class GameCommands
     {
         public static readonly string GetGameById = @"SELECT GameId
+                                                            , LeagueId
+                                                            , SeasonId
                                                             , GameDate
-                                                            , PlayerA
-                                                            , PlayerB
+                                                            , PlayerAId
+                                                            , PlayerBId
+                                                            , PlayerAName
+                                                            , PlayerBName
                                                             , ResultPlayerA
                                                             , ResultPlayerB
                                                         FROM [ttl.vw_GamesPlayers]
                                                        WHERE GameId = @GameId;";
 
         public static readonly string GetAllGames = @"SELECT GameId
+                                                            , LeagueId
+                                                            , SeasonId
                                                             , GameDate
-                                                            , PlayerA
-                                                            , PlayerB
+                                                            , PlayerAId
+                                                            , PlayerBId
+                                                            , PlayerAName
+                                                            , PlayerBName
                                                             , ResultPlayerA
                                                             , ResultPlayerB
                                                         FROM [ttl.vw_GamesPlayers];";
 
         public static readonly string GetAllGamesByLeagueId = @"SELECT GameId
+                                                                    , LeagueId
+                                                                    , SeasonId
                                                                     , GameDate
-                                                                    , PlayerA
-                                                                    , PlayerB
+                                                                    , PlayerAId
+                                                                    , PlayerBId
+                                                                    , PlayerAName
+                                                                    , PlayerBName
                                                                     , ResultPlayerA
                                                                     , ResultPlayerB
                                                                 FROM [ttl.vw_GamesPlayers]
                                                                 WHERE LeagueId = @LeagueId;";
 
         public static readonly string GetAllGamesBySeasonId = @"SELECT GameId
+                                                                    , LeagueId
+                                                                    , SeasonId
                                                                     , GameDate
-                                                                    , PlayerA
-                                                                    , PlayerB
+                                                                    , PlayerAId
+                                                                    , PlayerBId
+                                                                    , PlayerAName
+                                                                    , PlayerBName
                                                                     , ResultPlayerA
                                                                     , ResultPlayerB
                                                                 FROM [ttl.vw_GamesPlayers]
                                                                 WHERE SeasonId = @SeasonId;";
 
         public static readonly string GetAllGamesByPlayerId = @"SELECT GameId
+                                                                    , LeagueId
+                                                                    , SeasonId
                                                                     , GameDate
-                                                                    , PlayerA
-                                                                    , PlayerB
+                                                                    , PlayerAId
+                                                                    , PlayerBId
+                                                                    , PlayerAName
+                                                                    , PlayerBName
                                                                     , ResultPlayerA
                                                                     , ResultPlayerB
                                                                 FROM [ttl.vw_GamesPlayers]

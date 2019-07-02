@@ -1,15 +1,15 @@
 using System.Collections.Generic;
-using TableTennisLeague.Data.Model;
+using TableTennisLeague.Data.Models;
 
 namespace TableTennisLeague.Data.Interfaces
 {
     public interface IGameRepository
     {
-        Game GetGame(int gameId);
-        IEnumerable<Game> GetAllGames();
-        IEnumerable<Game> GetGamesForPlayer(int playerId);
-        IEnumerable<Game> GetGamesForLeague(int leagueId);
-        IEnumerable<Game> GetGamesForSeason(int seasonId);
+        GameViewModel GetGame(int gameId);
+        IEnumerable<GameViewModel> GetAllGames();
+        IEnumerable<GameViewModel> GetGamesForPlayer(int playerId);
+        IEnumerable<GameViewModel> GetGamesForLeague(int leagueId);
+        IEnumerable<GameViewModel> GetGamesForSeason(int seasonId);
         Game CreateGame(Game game);
         Game UpdateGame(Game game);
         void DeleteGame(int gameId);

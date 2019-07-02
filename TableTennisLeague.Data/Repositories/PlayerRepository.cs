@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using Dapper;
 using TableTennisLeague.Data.Interfaces;
-using TableTennisLeague.Data.Model;
+using TableTennisLeague.Data.Models;
 using TableTennisLeague.Data.SqlCommands;
 
 namespace TableTennisLeague.Data.Repositories

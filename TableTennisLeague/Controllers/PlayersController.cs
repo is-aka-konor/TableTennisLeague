@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TableTennisLeague.Data.Interfaces;
-using TableTennisLeague.Data.Model;
+using TableTennisLeague.Data.Models;
 
 namespace TableTennisLeague.SPA.Controllers
 {

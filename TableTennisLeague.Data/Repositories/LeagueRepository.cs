@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using TableTennisLeague.Data.Interfaces;
-using TableTennisLeague.Data.Model;
+using TableTennisLeague.Data.Models;
 
 namespace TableTennisLeague.Data.Repositories
 {

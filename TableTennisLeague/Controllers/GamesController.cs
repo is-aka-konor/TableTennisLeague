@@ -14,10 +14,13 @@ namespace TableTennisLeague.SPA.Controllers
             this._gameRepository = gameRepository;
         }
 
-        [HttpGet("{id:int}")]
+        [HttpGet("{gameId}")]
         public IActionResult GetGame(int gameId)
         {
-            return NotFound();
+            var result = this._gameRepository.GetGame(gameId);
+            if (result == null) return NotFound();
+
+            return Ok(result);
         }
 
         [HttpGet]
