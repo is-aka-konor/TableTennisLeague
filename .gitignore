@@ -229,3 +229,9 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+.idea
+/TableTennisLeague/app.db-journal
+
+# Mac OS files
+.DS_Store

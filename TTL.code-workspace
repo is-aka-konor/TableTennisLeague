@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "TableTennisLeague"
+		},
+		{
+			"path": "TableTennisLeague.Data"
+		},
+		{
+			"path": "TableTennisLeague.EloRanker"
+		},
+		{
+			"path": "TableTennisLeague.EloRanker.Tests"
+		}
+	]
+}
