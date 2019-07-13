@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TableTennisLeague.Data.Interfaces;
 using TableTennisLeague.Data.Models;
